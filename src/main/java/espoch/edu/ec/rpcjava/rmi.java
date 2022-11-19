@@ -23,6 +23,16 @@ public class rmi extends UnicastRemoteObject implements IServidor{
     }
     
     @Override
+    public void modificarCancion(int indice, String nombre, String artista, String genero) throws RemoteException {
+        playlist.set((indice - 1), (indice + ". " + nombre + " - " + artista + " - " + genero));
+    }
+    
+    @Override
+    public String buscarCancion(int indice) throws RemoteException {
+        return playlist.get((indice - 1));
+    }
+    
+    @Override
     public ArrayList<String> obtenerPlaylist() throws RemoteException {
         return playlist;
     }
